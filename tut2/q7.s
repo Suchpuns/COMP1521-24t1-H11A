@@ -16,9 +16,8 @@ print_loop_cond:
 	syscall					# 	printf("%d\n", x);
 print_loop_step:
 	addi	$t0, $t0, 3
-				# x += 3;
 	b	print_loop_cond
-print_loop_post:
+print_loop_post:				# }
 	
 	li	$v0, 0
-	jr	$ra		# return 0;
+	jr	$ra				# return 0;

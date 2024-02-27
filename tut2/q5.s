@@ -16,18 +16,19 @@ main:
 if_x_gt_square_max_true:
 	li	$v0, 4
 	la	$a0, square_too_big
+	syscall							# 	printf("square too big for 32 bits\n")
 	b if_x_gt_square_max_post
-if_x_gt_square_max_false:
-	mul	$t1, $t0, $t0
+if_x_gt_square_max_false:					# } else {
+	mul	$t1, $t0, $t0					# 	y = x * x;
 
 	li	$v0, 1
 	move	$a0, $t1
-	syscall
+	syscall							#	printf("%d\n", y);
 
 	li	$v0, 11
 	li	$a0, '\n'
-	syscall							# printf("%d\n", y);
-if_x_gt_square_max_post:
+	syscall							# 	printf("%d\n", y);
+if_x_gt_square_max_post:					# }
 
 	li	$v0, 0
 	jr	$ra						# return 0;
